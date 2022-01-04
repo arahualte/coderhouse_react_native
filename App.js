@@ -1,20 +1,19 @@
-import { StatusBar } from "expo-status-bar";
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import Task from "./components/Task";
+import React, { useState } from "react";
+import { StyleSheet, View, Keyboard, ScrollView } from "react-native";
+import { AppbarHeader } from "./components/AppbarHeader";
+import { BarNavigation } from "./components/BarNavigation";
+import { Provider } from "react-redux";
+import store from "./redux/store/store";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <View style={styles.taskWrapper}>
-        <Text style={styles.sectionTitle}>Today's Task</Text>
-        <View style={styles.items}>
-          <Task text={"task 1"} />
-          <Task text={"task 2"} />
-          <Task text={"task 3"} />
-        </View>
+    <Provider store={store}>
+      <View style={styles.container}>
+        <AppbarHeader />
+
+        <BarNavigation />
       </View>
-    </View>
+    </Provider>
   );
 }
 
@@ -22,16 +21,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#E8EAED",
-  },
-  taskWrapper: {
-    paddingTop: 80,
-    paddingHorizontal: 20,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: "bold",
-  },
-  items: {
-    marginTop: 30,
   },
 });
