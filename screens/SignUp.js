@@ -11,7 +11,13 @@ import { auth } from "../firebase/config";
 
 export const SignUp = () => {
   const [error, setError] = useState("");
-  const [form, setForm] = useState({ email: "", password: "" });
+  const [form, setForm] = useState({
+    username: "",
+    name: "",
+    surname: "",
+    email: "",
+    password: "",
+  });
 
   const handleSignUp = () => {
     signUpWithEmailAndPassword(auth, form.email, form.password)
@@ -19,8 +25,13 @@ export const SignUp = () => {
         // Signed in
         const user = userCredential.user;
         console.log(userCredential);
-        setForm({ email: "", password: "" });
-        // ...
+        setForm({
+          username: "",
+          name: "",
+          surname: "",
+          email: "",
+          password: "",
+        });
       })
       .catch((error) => {
         console.log(error);
@@ -33,6 +44,30 @@ export const SignUp = () => {
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Sign Up!</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Username"
+        blurOnSubmit={true}
+        textContentType="username"
+        onChangeText={(text) => setForm({ ...form, username: text })}
+        value={form.username}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Name"
+        blurOnSubmit={true}
+        textContentType="name"
+        onChangeText={(text) => setForm({ ...form, name: text })}
+        value={form.name}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Surname"
+        blurOnSubmit={true}
+        textContentType="surname"
+        onChangeText={(text) => setForm({ ...form, surname: text })}
+        value={form.surname}
+      />
 
       <TextInput
         style={styles.input}
@@ -53,7 +88,7 @@ export const SignUp = () => {
 
       {error !== "" && <Text>{error}</Text>}
 
-      <Button title="SIGN UP" color="#7B2CBF" onPress={() => handleSignUp()} />
+      <Button title="REGISTER" color="#7B2CBF" onPress={() => handleSignUp()} />
     </SafeAreaView>
   );
 };

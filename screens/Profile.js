@@ -9,6 +9,7 @@ import {
   SafeAreaView,
   ScrollView,
 } from "react-native";
+import ImageSelector from "../components/ImageSelector";
 
 export const Profile = () => {
   const [text, setText] = useState({
@@ -17,13 +18,15 @@ export const Profile = () => {
     surname: "",
     email: "",
   });
+  const [image, setImage] = useState();
 
   return (
     <SafeAreaView style={styles.container}>
       <KeyboardAvoidingView style={styles.imgWrapper}>
-        <View style={styles.avatarImg}>
-          <Text>Choose Img</Text>
-        </View>
+        <ImageSelector
+          onImage={(image) => console.log(image)}
+          setImage={setImage}
+        />
         <Text style={styles.profileName}>Profile Name</Text>
       </KeyboardAvoidingView>
 
@@ -92,21 +95,22 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     backgroundColor: "lightblue",
     width: "100%",
-    height: "35%",
+    height: "auto",
     justifyContent: "center",
     alignItems: "center",
+    padding: 20,
   },
 
-  avatarImg: {
-    width: 150,
-    height: 150,
-    backgroundColor: "#FFF",
-    borderRadius: 100,
-    justifyContent: "center",
-    alignItems: "center",
-    borderColor: "#6204e8",
-    borderWidth: 2,
-  },
+  // avatarImg: {
+  //   width: 150,
+  //   height: 150,
+  //   backgroundColor: "#FFF",
+  //   borderRadius: 100,
+  //   justifyContent: "center",
+  //   alignItems: "center",
+  //   borderColor: "#6204e8",
+  //   borderWidth: 2,
+  // },
 
   profileName: {
     fontSize: 20,
@@ -124,11 +128,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     marginBottom: 20,
   },
-  separator: {
-    marginVertical: 8,
-    borderBottomColor: "#737373",
-    borderBottomWidth: StyleSheet.hairlineWidth,
-  },
+
   input: {
     height: 40,
     margin: 12,

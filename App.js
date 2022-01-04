@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { StyleSheet, View, Keyboard, ScrollView } from "react-native";
+import React from "react";
+import { StyleSheet, View } from "react-native";
 import { AppbarHeader } from "./components/AppbarHeader";
 import { BarNavigation } from "./components/BarNavigation";
 import { Provider } from "react-redux";
@@ -10,7 +10,6 @@ export default function App() {
     <Provider store={store}>
       <View style={styles.container}>
         <AppbarHeader />
-
         <BarNavigation />
       </View>
     </Provider>
