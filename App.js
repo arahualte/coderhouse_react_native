@@ -1,16 +1,14 @@
-import React from "react";
-import { StyleSheet, View } from "react-native";
-import { AppbarHeader } from "./components/AppbarHeader";
-import { BarNavigation } from "./components/BarNavigation";
+import React, { useState } from "react";
 import { Provider } from "react-redux";
+import { StyleSheet, View } from "react-native";
 import store from "./redux/store/store";
+import { Navigation } from "./components/Navigation";
 
 export default function App() {
   return (
     <Provider store={store}>
       <View style={styles.container}>
-        <AppbarHeader />
-        <BarNavigation />
+        <Navigation />
       </View>
     </Provider>
   );
@@ -19,6 +17,5 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#E8EAED",
   },
 });
