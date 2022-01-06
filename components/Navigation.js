@@ -10,7 +10,6 @@ import { StyleSheet, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { auth } from "../firebase/config";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Archieved } from "../screens/Archieved";
 
 const Tab = createBottomTabNavigator();
 
@@ -48,10 +47,6 @@ export const Navigation = () => {
               let iconName;
               if (route.name === "Home") {
                 iconName = "home";
-                size = focused ? 21 : 19;
-                color = focused ? "#FFF" : "grey";
-              } else if (route.name === "Archieved") {
-                iconName = "history";
                 size = focused ? 21 : 19;
                 color = focused ? "#FFF" : "grey";
               } else if (route.name === "Profile") {
@@ -92,7 +87,6 @@ export const Navigation = () => {
           {user ? (
             <>
               <Tab.Screen name="Home" component={Home} />
-              <Tab.Screen name="Archieved" component={Archieved} />
               <Tab.Screen name="Profile" component={Profile} />
             </>
           ) : (
